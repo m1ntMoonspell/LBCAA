@@ -56,6 +56,11 @@
             "name": "领取奖励",
             "entry": "ClaimRewards",
             "default_check": true
+        },
+        {
+            "name": "兑换脑啡肽",
+            "entry": "ToEnkephalin",
+            "default_check": true
         }
     ],
     "option": {

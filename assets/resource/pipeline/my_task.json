@@ -20,13 +20,7 @@
     },
     "ClaimRewards": {
         "next": [
-            "Back2Main",
-            "ClickSeasonBanner",
-            "WaitSwitch2SeasonScence",
-            "ClickOnMission",
-            "WaitForMissionList",
-            "ClaimDailyRewards",
-            "ClaimWeeklyRewards"
+            "Back2Main"
         ]
     },
     "Back2Main": {
@@ -37,12 +31,7 @@
             }
         },
         "next": [
-            "ClickSeasonBanner",
-            "WaitSwitch2SeasonScence",
-            "ClickOnMission",
-            "WaitForMissionList",
-            "ClaimDailyRewards",
-            "ClaimWeeklyRewards"
+            "ClickSeasonBanner"
         ]
     },
     "ClickSeasonBanner": {
@@ -59,11 +48,7 @@
             }
         },
         "next": [
-            "WaitSwitch2SeasonScence",
-            "ClickOnMission",
-            "WaitForMissionList",
-            "ClaimDailyRewards",
-            "ClaimWeeklyRewards"
+            "WaitSwitch2SeasonScence"
         ],
         "post_delay": 500
     },
@@ -78,10 +63,7 @@
             }
         },
         "next": [
-            "ClickOnMission",
-            "WaitForMissionList",
-            "ClaimDailyRewards",
-            "ClaimWeeklyRewards"
+            "ClickOnMission"
         ]
     },
     "ClickOnMission": {
@@ -100,9 +82,7 @@
             }
         },
         "next": [
-            "WaitForMissionList",
-            "ClaimDailyRewards",
-            "ClaimWeeklyRewards"
+            "WaitForMissionList"
         ]
     },
     "WaitForMissionList": {
@@ -116,8 +96,7 @@
             }
         },
         "next": [
-            "ClaimDailyRewards",
-            "ClaimWeeklyRewards"
+            "ClaimDailyRewards"
         ]
     },
     "ClaimDailyRewards": {
@@ -136,11 +115,7 @@
             }
         },
         "next": [
-            "RewardSlot1",
-            "RewardSlot2",
-            "RewardSlot3",
-            "RewardSlot4",
-            "RewardSlot5"
+            "RewardSlot1"
         ]
     },
     "ClaimWeeklyRewards": {
@@ -157,18 +132,14 @@
             "param": {
                 "target": [
                     277,
-                    353,
-                    22,
-                    99
+                    359,
+                    20,
+                    85
                 ]
             }
         },
         "next": [
-            "RewardSlot1",
-            "RewardSlot2",
-            "RewardSlot3",
-            "RewardSlot4",
-            "RewardSlot5"
+            "RewardSlot1"
         ]
     },
     "RewardSlot1": {
@@ -187,10 +158,7 @@
             }
         },
         "next": [
-            "RewardSlot2",
-            "RewardSlot3",
-            "RewardSlot4",
-            "RewardSlot5"
+            "RewardSlot2"
         ]
     },
     "RewardSlot2": {
@@ -209,9 +177,7 @@
             }
         },
         "next": [
-            "RewardSlot3",
-            "RewardSlot4",
-            "RewardSlot5"
+            "RewardSlot3"
         ]
     },
     "RewardSlot3": {
@@ -230,8 +196,7 @@
             }
         },
         "next": [
-            "RewardSlot4",
-            "RewardSlot5"
+            "RewardSlot4"
         ]
     },
     "RewardSlot4": {
@@ -250,10 +215,10 @@
             }
         },
         "next": [
-            "RewardSlot5"
+            "RewardSlot5Daily"
         ]
     },
-    "RewardSlot5": {
+    "RewardSlot5Daily": {
         "recognition": {
             "type": "DirectHit"
         },
@@ -267,6 +232,130 @@
                     56
                 ]
             }
+        },
+        "next": [
+            "ClaimWeeklyRewards"
+        ]
+    },
+    "RewardSlot5Weekly": {
+        "recognition": {
+            "type": "DirectHit"
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    377,
+                    560,
+                    340,
+                    56
+                ]
+            }
+        }
+    },
+    "ToEnkephalin": {
+        "next": [
+            "ClickEnkephalin"
+        ]
+    },
+    "WaitForEnkephalinScence": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "补充脑啡肽"
+                ]
+            }
+        },
+        "next": [
+            "TopupEnkephalin",
+            "GoBack2Main"
+        ]
+    },
+    "ClickEnkephalin": {
+        "recognition": {
+            "type": "DirectHit"
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    351,
+                    632,
+                    128,
+                    39
+                ]
+            }
+        },
+        "next": [
+            "WaitForEnkephalinScence"
+        ]
+    },
+    "TopupEnkephalin": {
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "upper": [
+                    163,
+                    138,
+                    112
+                ],
+                "lower": [
+                    143,
+                    118,
+                    92
+                ],
+                "roi": [
+                    840,
+                    313,
+                    31,
+                    28
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": true
+            }
+        },
+        "next": [
+            "ConfirmTopup"
+        ]
+    },
+    "ConfirmTopup": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": [
+                    "ComfirmTopup.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": true
+            }
+        },
+        "next": [
+            "GoBack2Main"
+        ]
+    },
+    "GoBack2Main": {
+        "recognition": "OCR",
+        "expected": [
+            "脑啡肽不足"
+        ],
+        "action": "Click",
+        "target": [
+            79,
+            44,
+            55,
+            26
+        ],
+        "focus": {
+            "Node.Recognition.Succeeded": "脑啡肽不足，返回主界面"
         }
     }
 }
