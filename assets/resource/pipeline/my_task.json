@@ -1,11 +1,272 @@
 {
-    "MyTask1": {},
-    "MyTask2": {},
-    "MyTask3": {},
-    "MyTask4": {
-        "recognition": "Custom",
-        "custom_recognition": "my_reco_222",
-        "action": "Custom",
-        "custom_action": "my_action_111"
+    "Startup": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "选择自定义语言"
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    575,
+                    538,
+                    230,
+                    59
+                ]
+            }
+        }
+    },
+    "ClaimRewards": {
+        "next": [
+            "Back2Main",
+            "ClickSeasonBanner",
+            "WaitSwitch2SeasonScence",
+            "ClickOnMission",
+            "WaitForMissionList",
+            "ClaimDailyRewards",
+            "ClaimWeeklyRewards"
+        ]
+    },
+    "Back2Main": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "Season7Banner.png"
+            }
+        },
+        "next": [
+            "ClickSeasonBanner",
+            "WaitSwitch2SeasonScence",
+            "ClickOnMission",
+            "WaitForMissionList",
+            "ClaimDailyRewards",
+            "ClaimWeeklyRewards"
+        ]
+    },
+    "ClickSeasonBanner": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "Season7Banner.png"
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": true
+            }
+        },
+        "next": [
+            "WaitSwitch2SeasonScence",
+            "ClickOnMission",
+            "WaitForMissionList",
+            "ClaimDailyRewards",
+            "ClaimWeeklyRewards"
+        ],
+        "post_delay": 500
+    },
+    "WaitSwitch2SeasonScence": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "战斗通行证",
+                    "通行证任务"
+                ]
+            }
+        },
+        "next": [
+            "ClickOnMission",
+            "WaitForMissionList",
+            "ClaimDailyRewards",
+            "ClaimWeeklyRewards"
+        ]
+    },
+    "ClickOnMission": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "通行证任务"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": true
+            }
+        },
+        "next": [
+            "WaitForMissionList",
+            "ClaimDailyRewards",
+            "ClaimWeeklyRewards"
+        ]
+    },
+    "WaitForMissionList": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": [
+                    "TitleDailyMission.png",
+                    "TitleWeekyMission.png"
+                ]
+            }
+        },
+        "next": [
+            "ClaimDailyRewards",
+            "ClaimWeeklyRewards"
+        ]
+    },
+    "ClaimDailyRewards": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": [
+                    "TitleDailyMission.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": true
+            }
+        },
+        "next": [
+            "RewardSlot1",
+            "RewardSlot2",
+            "RewardSlot3",
+            "RewardSlot4",
+            "RewardSlot5"
+        ]
+    },
+    "ClaimWeeklyRewards": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": [
+                    "TitleWeekyMission.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    277,
+                    353,
+                    22,
+                    99
+                ]
+            }
+        },
+        "next": [
+            "RewardSlot1",
+            "RewardSlot2",
+            "RewardSlot3",
+            "RewardSlot4",
+            "RewardSlot5"
+        ]
+    },
+    "RewardSlot1": {
+        "recognition": {
+            "type": "DirectHit"
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    383,
+                    194,
+                    330,
+                    52
+                ]
+            }
+        },
+        "next": [
+            "RewardSlot2",
+            "RewardSlot3",
+            "RewardSlot4",
+            "RewardSlot5"
+        ]
+    },
+    "RewardSlot2": {
+        "recognition": {
+            "type": "DirectHit"
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    387,
+                    286,
+                    337,
+                    52
+                ]
+            }
+        },
+        "next": [
+            "RewardSlot3",
+            "RewardSlot4",
+            "RewardSlot5"
+        ]
+    },
+    "RewardSlot3": {
+        "recognition": {
+            "type": "DirectHit"
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    380,
+                    377,
+                    339,
+                    56
+                ]
+            }
+        },
+        "next": [
+            "RewardSlot4",
+            "RewardSlot5"
+        ]
+    },
+    "RewardSlot4": {
+        "recognition": {
+            "type": "DirectHit"
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    377,
+                    468,
+                    343,
+                    57
+                ]
+            }
+        },
+        "next": [
+            "RewardSlot5"
+        ]
+    },
+    "RewardSlot5": {
+        "recognition": {
+            "type": "DirectHit"
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    377,
+                    560,
+                    340,
+                    56
+                ]
+            }
+        }
     }
 }
