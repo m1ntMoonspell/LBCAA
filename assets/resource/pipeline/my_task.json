@@ -34,57 +34,6 @@
             "ClickSeasonBanner"
         ]
     },
-    "ClickSeasonBanner": {
-        "recognition": {
-            "type": "TemplateMatch",
-            "param": {
-                "template": "Season7Banner.png"
-            }
-        },
-        "action": {
-            "type": "Click",
-            "param": {
-                "target": true
-            }
-        },
-        "next": [
-            "WaitSwitch2SeasonScence"
-        ],
-        "post_delay": 500
-    },
-    "WaitSwitch2SeasonScence": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "expected": [
-                    "战斗通行证",
-                    "通行证任务"
-                ]
-            }
-        },
-        "next": [
-            "ClickOnMission"
-        ]
-    },
-    "ClickOnMission": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "expected": [
-                    "通行证任务"
-                ]
-            }
-        },
-        "action": {
-            "type": "Click",
-            "param": {
-                "target": true
-            }
-        },
-        "next": [
-            "WaitForMissionList"
-        ]
-    },
     "WaitForMissionList": {
         "recognition": {
             "type": "TemplateMatch",
@@ -94,29 +43,7 @@
                     "TitleWeekyMission.png"
                 ]
             }
-        },
-        "next": [
-            "ClaimDailyRewards"
-        ]
-    },
-    "ClaimDailyRewards": {
-        "recognition": {
-            "type": "TemplateMatch",
-            "param": {
-                "template": [
-                    "TitleDailyMission.png"
-                ]
-            }
-        },
-        "action": {
-            "type": "Click",
-            "param": {
-                "target": true
-            }
-        },
-        "next": [
-            "RewardSlot1"
-        ]
+        }
     },
     "ClaimWeeklyRewards": {
         "recognition": {

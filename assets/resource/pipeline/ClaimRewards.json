@@ -1,0 +1,135 @@
+{
+    "ClaimDailyRewards": {
+        "next": [
+            "ClickSeasonBanner"
+        ]
+    },
+    "ClickSeasonBanner": {
+        "doc": "点击赛季BP",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    976,
+                    152,
+                    366,
+                    152
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 500
+        },
+        "next": [
+            "BPSceneReco",
+            "[JumpBack]ClickSeasonBanner"
+        ]
+    },
+    "BPSceneReco": {
+        "doc": "BP界面识别",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    59,
+                    376,
+                    65,
+                    256
+                ]
+            }
+        },
+        "action": {
+            "type": "DoNothing"
+        },
+        "next": [
+            "ClickOnMission"
+        ]
+    },
+    "ClickOnMission": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "通行证任务"
+                ],
+                "roi": [
+                    322,
+                    34,
+                    149,
+                    54
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": true
+            }
+        },
+        "post_wait_freezes": 500,
+        "next": [
+            "MissionList",
+            "[JumpBack]ClickOnMission"
+        ]
+    },
+    "MissionList": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    361,
+                    170,
+                    382,
+                    99
+                ],
+                "expected": [
+                    "制作脑啡肽模块1次"
+                ]
+            }
+        },
+        "next": [
+            "MultiClickOnMission"
+        ]
+    },
+    "MultiClickOnMission": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    361,
+                    170,
+                    382,
+                    99
+                ],
+                "expected": [
+                    "制作脑啡肽模块1次"
+                ]
+            }
+        },
+        "action": {
+            "type": "DoNothing"
+        }
+    },
+    "BackButton": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": [
+                    "BackButton.png"
+                ],
+                "roi": [
+                    75,
+                    40,
+                    64,
+                    34
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    }
+}
