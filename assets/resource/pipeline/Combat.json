@@ -8,10 +8,10 @@
                     "罪人"
                 ],
                 "roi": [
-                    800,
-                    642,
-                    44,
-                    21
+                    753,
+                    647,
+                    41,
+                    19
                 ]
             }
         },
@@ -33,10 +33,10 @@
             "type": "TemplateMatch",
             "param": {
                 "roi": [
-                    1141,
-                    95,
-                    67,
-                    30
+                    1071,
+                    111,
+                    72,
+                    24
                 ],
                 "template": [
                     "./general/SinnerWindow.png"
@@ -53,10 +53,10 @@
                     "地狱"
                 ],
                 "roi": [
-                    1180,
-                    115,
-                    108,
-                    57
+                    1117,
+                    125,
+                    83,
+                    54
                 ]
             }
         },
@@ -76,10 +76,10 @@
                     "驾驶席"
                 ],
                 "roi": [
-                    901,
-                    637,
-                    60,
-                    30
+                    850,
+                    650,
+                    52,
+                    19
                 ]
             }
         },
@@ -104,9 +104,9 @@
                     "经验"
                 ],
                 "roi": [
-                    147,
-                    241,
-                    70,
+                    138,
+                    246,
+                    66,
                     35
                 ]
             }
@@ -127,10 +127,10 @@
                     "采光"
                 ],
                 "roi": [
-                    440,
-                    172,
-                    72,
-                    37
+                    417,
+                    184,
+                    62,
+                    32
                 ]
             }
         },
@@ -158,5 +158,80 @@
             }
         },
         "post_wait_freezes": 500
+    },
+    "CommenceBattle": {
+        "next": [
+            "EnteringSinnerWnd",
+            "[JumpBack]EnterStage"
+        ]
+    },
+    "SkipBattle": {
+        "next": [
+            "EnteringSkipPopup",
+            "[JumpBack]EnterStage"
+        ]
+    },
+    "EnteringSkipPopup": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "跳过战斗"
+                ],
+                "roi": [
+                    585,
+                    105,
+                    108,
+                    32
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    726,
+                    482,
+                    70,
+                    17
+                ]
+            }
+        },
+        "post_wait_freezes": 500,
+        "next": [
+            "ResultScene",
+            "[JumpBack]EnteringSkipPopup"
+        ]
+    },
+    "ResultScene": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    950,
+                    101,
+                    229,
+                    66
+                ],
+                "expected": [
+                    "战斗胜利"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1050,
+                    538,
+                    126,
+                    40
+                ]
+            }
+        },
+        "post_wait_freezes": 500,
+        "next": [
+            "[JumpBack]ResultScene"
+        ]
     }
 }
