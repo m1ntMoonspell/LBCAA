@@ -115,11 +115,8 @@
     },
     "BackButton": {
         "recognition": {
-            "type": "TemplateMatch",
+            "type": "DirectHit",
             "param": {
-                "template": [
-                    "BackButton.png"
-                ],
                 "roi": [
                     75,
                     40,

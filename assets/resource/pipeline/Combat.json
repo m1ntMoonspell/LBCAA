@@ -1,0 +1,162 @@
+{
+    "ClickOnSinnerTitle": {
+        "doc": "在主界面点击罪人",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "罪人"
+                ],
+                "roi": [
+                    800,
+                    642,
+                    44,
+                    21
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": true
+            }
+        },
+        "post_wait_freezes": 500,
+        "next": [
+            "EnteringSinnerWnd",
+            "[JumpBack]ClickOnSinnerTitle"
+        ]
+    },
+    "EnteringSinnerWnd": {
+        "doc": "进入编队界面",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    1141,
+                    95,
+                    67,
+                    30
+                ],
+                "template": [
+                    "./general/SinnerWindow.png"
+                ]
+            }
+        }
+    },
+    "EnteringStageWnd": {
+        "doc": "进入驾驶席界面",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "地狱"
+                ],
+                "roi": [
+                    1180,
+                    115,
+                    108,
+                    57
+                ]
+            }
+        },
+        "action": {
+            "type": "DoNothing"
+        },
+        "next": [
+            "ClickOnLuxcavationTitle"
+        ]
+    },
+    "ClickStageTitle": {
+        "doc": "在主界面点击驾驶席",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "驾驶席"
+                ],
+                "roi": [
+                    901,
+                    637,
+                    60,
+                    30
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": true
+            }
+        },
+        "post_wait_freezes": 500,
+        "next": [
+            "EnteringStageWnd",
+            "[JumpBack]ClickStageTitle"
+        ]
+    },
+    "EnteringLuxcavation": {
+        "doc": "进入经验采光",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "经验"
+                ],
+                "roi": [
+                    147,
+                    241,
+                    70,
+                    35
+                ]
+            }
+        },
+        "action": {
+            "type": "DoNothing"
+        },
+        "next": [
+            "EnterStage"
+        ]
+    },
+    "ClickOnLuxcavationTitle": {
+        "doc": "点击采光按钮",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "采光"
+                ],
+                "roi": [
+                    440,
+                    172,
+                    72,
+                    37
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": true
+            }
+        },
+        "post_wait_freezes": 500,
+        "next": [
+            "EnteringLuxcavation",
+            "[JumpBack]ClickOnLuxcavationTitle"
+        ]
+    },
+    "EnterStage": {
+        "doc": "进入关卡",
+        "recognition": {
+            "type": "DirectHit"
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": true
+            }
+        },
+        "post_wait_freezes": 500
+    }
+}

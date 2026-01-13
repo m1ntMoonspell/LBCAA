@@ -1,0 +1,197 @@
+{
+    "EnteringEnkephalinScene": {
+        "doc": "进入补充脑啡肽界面",
+        "recognition": {
+            "type": "DirectHit",
+            "param": {
+                "roi": [
+                    370,
+                    637,
+                    106,
+                    31
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    370,
+                    637,
+                    106,
+                    31
+                ]
+            }
+        },
+        "post_wait_freezes": 500,
+        "next": [
+            "EnkephalinScene",
+            "[JumpBack]EnteringEnkephalinScene"
+        ]
+    },
+    "EnkephalinScene": {
+        "doc": "识别补充脑啡肽界面",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "补充脑啡肽"
+                ],
+                "roi": [
+                    592,
+                    84,
+                    164,
+                    47
+                ]
+            }
+        },
+        "action": {
+            "type": "DoNothing"
+        },
+        "next": [
+            "NoEnkephalin",
+            "TopupEnkephalinModule"
+        ]
+    },
+    "TopupEnkephalinModule": {
+        "doc": "将体力全部转换为脑啡肽",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    864,
+                    312,
+                    7,
+                    6
+                ],
+                "upper": [
+                    165,
+                    140,
+                    112
+                ],
+                "lower": [
+                    145,
+                    120,
+                    92
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": true
+            }
+        },
+        "next": [
+            "TopupButtonPressed",
+            "[JumpBack]ConfirmTopup"
+        ]
+    },
+    "TopupButtonPressed": {
+        "doc": "确保最大键已经按下",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    864,
+                    312,
+                    7,
+                    6
+                ],
+                "upper": [
+                    75,
+                    64,
+                    52
+                ],
+                "lower": [
+                    55,
+                    44,
+                    32
+                ]
+            }
+        },
+        "action": {
+            "type": "DoNothing"
+        },
+        "next": [
+            "ConfirmTopup"
+        ]
+    },
+    "ConfirmTopup": {
+        "doc": "确认",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    756,
+                    527,
+                    113,
+                    34
+                ],
+                "expected": [
+                    "确认"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": true
+            }
+        },
+        "next": [
+            "ConfirmPressed",
+            "[JumpBack]ConfirmTopup"
+        ]
+    },
+    "ConfirmPressed": {
+        "doc": "确保确认已经按下",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    756,
+                    527,
+                    113,
+                    34
+                ],
+                "upper": [
+                    95,
+                    82,
+                    71
+                ],
+                "lower": [
+                    75,
+                    62,
+                    51
+                ]
+            }
+        },
+        "action": {
+            "type": "DoNothing"
+        },
+        "next": [
+            "BackButton"
+        ]
+    },
+    "NoEnkephalin": {
+        "doc": "如果没有脑啡肽就直接返回主界面",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    619,
+                    485,
+                    113,
+                    30
+                ],
+                "template": [
+                    "./general/NoEnkephalin.png"
+                ]
+            }
+        },
+        "next": [
+            "BackButton"
+        ]
+    }
+}
