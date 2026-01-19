@@ -61,8 +61,14 @@
         {
             "name": "日常采光",
             "entry": "ClickStageTitle",
+            "pipeline_override": {
+                "LoadingScene": {
+                    "inverse": true
+                }
+            },
             "option": [
-                "进入战斗"
+                "进入战斗",
+                "选择编队"
             ]
         }
     ],
@@ -111,6 +117,31 @@
                     }
                 }
             ]
+        },
+        "选择编队": {
+            "type": "input",
+            "label": "自定义编队",
+            "inputs": [
+                {
+                    "name": "编队名",
+                    "label": "编队名",
+                    "description": "编队名称，需与编队界面编队名称一致",
+                    "default": "编队#1",
+                    "pipeline_type": "string"
+                }
+            ],
+            "pipeline_override": {
+                "ChooseTeam": {
+                    "expected": [
+                        "{编队名}"
+                    ]
+                },
+                "ScrollDownTeamList": {
+                    "expected": [
+                        "{编队名}"
+                    ]
+                }
+            }
         }
     }
 }

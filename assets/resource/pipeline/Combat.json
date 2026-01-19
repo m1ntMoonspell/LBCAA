@@ -1,32 +1,4 @@
 {
-    "ClickOnSinnerTitle": {
-        "doc": "在主界面点击罪人",
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "expected": [
-                    "罪人"
-                ],
-                "roi": [
-                    753,
-                    647,
-                    41,
-                    19
-                ]
-            }
-        },
-        "action": {
-            "type": "Click",
-            "param": {
-                "target": true
-            }
-        },
-        "post_wait_freezes": 500,
-        "next": [
-            "EnteringSinnerWnd",
-            "[JumpBack]ClickOnSinnerTitle"
-        ]
-    },
     "EnteringSinnerWnd": {
         "doc": "进入编队界面",
         "recognition": {
@@ -42,7 +14,10 @@
                     "./general/SinnerWindow.png"
                 ]
             }
-        }
+        },
+        "next": [
+            "ScrollUpTeamList"
+        ]
     },
     "EnteringStageWnd": {
         "doc": "进入驾驶席界面",
@@ -208,13 +183,14 @@
             "type": "OCR",
             "param": {
                 "roi": [
-                    950,
-                    101,
-                    229,
-                    66
+                    935,
+                    128,
+                    254,
+                    74
                 ],
                 "expected": [
-                    "战斗胜利"
+                    "战斗胜利",
+                    "战斗失败"
                 ]
             }
         },
@@ -222,16 +198,214 @@
             "type": "Click",
             "param": {
                 "target": [
-                    1050,
-                    538,
-                    126,
-                    40
+                    1047,
+                    534,
+                    124,
+                    47
                 ]
             }
         },
         "post_wait_freezes": 500,
         "next": [
             "[JumpBack]ResultScene"
+        ]
+    },
+    "ChooseTeam": {
+        "doc": "选择队伍",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    75,
+                    295,
+                    118,
+                    219
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": true
+            }
+        },
+        "next": [
+            "ClickStart",
+            "[JumpBack]LoadingScene"
+        ]
+    },
+    "CheckTeam": {
+        "doc": "确认选择编队为期望编队",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    217,
+                    106,
+                    96,
+                    38
+                ]
+            }
+        },
+        "inverse": true
+    },
+    "ScrollDownTeamList": {
+        "doc": "向下滑动编队列表",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    217,
+                    106,
+                    96,
+                    38
+                ]
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    88,
+                    481,
+                    87,
+                    27
+                ],
+                "end": [
+                    77,
+                    258,
+                    105,
+                    19
+                ],
+                "end_hold": 500
+            }
+        },
+        "inverse": true,
+        "max_hit": 3
+    },
+    "ScrollUpTeamList": {
+        "doc": "向上滑动编队列表",
+        "recognition": {
+            "type": "DirectHit"
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "end": [
+                    101,
+                    577,
+                    68,
+                    26
+                ],
+                "begin": [
+                    95,
+                    320,
+                    72,
+                    18
+                ],
+                "duration": 100
+            }
+        },
+        "post_wait_freezes": 500,
+        "next": [
+            "ChooseTeam",
+            "[JumpBack]ScrollDownTeamList"
+        ]
+    },
+    "ClickStart": {
+        "doc": "点击开始战斗",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    1087,
+                    572,
+                    116,
+                    30
+                ],
+                "expected": [
+                    "开始战斗"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": true
+            }
+        },
+        "next": [
+            "WaitForCombat"
+        ]
+    },
+    "WaitForCombat": {
+        "doc": "等待战斗开始",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "胜率"
+                ]
+            }
+        },
+        "action": {
+            "type": "DoNothing"
+        },
+        "rate_limit": 1000,
+        "next": [
+            "pTheCombat"
+        ]
+    },
+    "pTheCombat": {
+        "recognition": {
+            "type": "DirectHit"
+        },
+        "action": {
+            "type": "ClickKey",
+            "param": {
+                "key": [
+                    80
+                ]
+            }
+        },
+        "post_wait_freezes": 500,
+        "next": [
+            "StartTurn"
+        ]
+    },
+    "StartTurn": {
+        "recognition": {
+            "type": "DirectHit"
+        },
+        "action": {
+            "type": "ClickKey",
+            "param": {
+                "key": [
+                    13
+                ]
+            }
+        },
+        "next": [
+            "WaitForTurn"
+        ]
+    },
+    "WaitForTurn": {
+        "doc": "等待回合结束",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "胜率"
+                ]
+            }
+        },
+        "action": {
+            "type": "DoNothing"
+        },
+        "rate_limit": 1000,
+        "timeout": 60000,
+        "next": [
+            "WaitForCombat"
         ]
     }
 }

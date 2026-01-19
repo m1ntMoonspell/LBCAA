@@ -1,0 +1,21 @@
+{
+    "LoadingScene": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    1094,
+                    301,
+                    135,
+                    32
+                ],
+                "expected": [
+                    "战斗小贴士"
+                ]
+            }
+        }
+    },
+    "Homepage": {
+        "recognition": {}
+    }
+}
