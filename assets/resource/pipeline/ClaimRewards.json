@@ -113,7 +113,7 @@
             "type": "DoNothing"
         }
     },
-    "BackButton": {
+    "CancelButton": {
         "recognition": {
             "type": "DirectHit",
             "param": {

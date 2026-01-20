@@ -1,0 +1,29 @@
+{
+    "StageSelect": {
+        "doc": "选择主题卡包"
+    },
+    "RoomSelect": {
+        "doc": "决定每层要进入的节点"
+    },
+    "EnteringRoom": {
+        "doc": "进入节点"
+    },
+    "EventProcessing": {
+        "doc": "处理事件节点"
+    },
+    "StoreProcessing": {
+        "doc": "处理商店节点"
+    },
+    "SkillReplace": {
+        "doc": "替换技能"
+    },
+    "BuyArtifact": {
+        "doc": "买饰品"
+    },
+    "UpgradeArtifact": {
+        "doc": "强化饰品"
+    },
+    "MeltArtifact": {
+        "doc": "合成饰品"
+    }
+}

@@ -15,7 +15,199 @@
             }
         }
     },
+    "GlassWnd": {
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "expected": [
+                                    "玻璃窗"
+                                ],
+                                "roi": [
+                                    640,
+                                    647,
+                                    64,
+                                    27
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "ColorMatch",
+                            "param": {
+                                "upper": [
+                                    234,
+                                    186,
+                                    10
+                                ],
+                                "lower": [
+                                    214,
+                                    166,
+                                    0
+                                ],
+                                "roi": [
+                                    640,
+                                    647,
+                                    64,
+                                    27
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    },
     "Homepage": {
-        "recognition": {}
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    640,
+                    647,
+                    64,
+                    27
+                ],
+                "expected": [
+                    "玻璃窗"
+                ]
+            }
+        }
+    },
+    "BattlePassScene": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "战斗通行证"
+                ],
+                "roi": [
+                    180,
+                    44,
+                    113,
+                    26
+                ]
+            }
+        }
+    },
+    "BackButton": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": [
+                    "general/BackButton.png"
+                ],
+                "roi": [
+                    60,
+                    26,
+                    71,
+                    44
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": true
+            }
+        },
+        "max_hit": 3
+    },
+    "LuxcavationScene": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "采光"
+                ],
+                "roi": [
+                    114,
+                    184,
+                    60,
+                    31
+                ]
+            }
+        }
+    },
+    "MirrorScene": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "永生之镜"
+                ],
+                "roi": [
+                    610,
+                    109,
+                    125,
+                    51
+                ]
+            }
+        }
+    },
+    "MirrorMap": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": [
+                    "combat/mirror/general/light.png"
+                ],
+                "roi": [
+                    954,
+                    21,
+                    109,
+                    51
+                ]
+            }
+        }
+    },
+    "SinnerWnd": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": [
+                    "general/SinnerWindow.png"
+                ],
+                "roi": [
+                    1074,
+                    112,
+                    64,
+                    25
+                ]
+            }
+        }
+    },
+    "MirrorStageSelect": {
+        "doc": "主题卡包选择界面",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "主题卡包"
+                ],
+                "roi": [
+                    517,
+                    95,
+                    237,
+                    47
+                ]
+            }
+        }
+    },
+    "NowScene": {
+        "doc": "判断当前所处的场景",
+        "next": [
+            "Homepage",
+            "BattlePassScene",
+            "LuxcavationScene",
+            "MirrorScene",
+            "SinnerWnd",
+            "MirrorStageSelect"
+        ]
     }
 }

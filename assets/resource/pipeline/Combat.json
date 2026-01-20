@@ -71,27 +71,20 @@
         ]
     },
     "EnteringLuxcavation": {
-        "doc": "进入经验采光",
+        "doc": "进入采光",
         "recognition": {
-            "type": "OCR",
-            "param": {
-                "expected": [
-                    "经验"
-                ],
-                "roi": [
-                    138,
-                    246,
-                    66,
-                    35
-                ]
-            }
+            "type": "OCR"
         },
         "action": {
-            "type": "DoNothing"
+            "type": "Click",
+            "param": {
+                "target": true
+            }
         },
         "next": [
             "EnterStage"
-        ]
+        ],
+        "pre_delay": 500
     },
     "ClickOnLuxcavationTitle": {
         "doc": "点击采光按钮",
@@ -124,7 +117,7 @@
     "EnterStage": {
         "doc": "进入关卡",
         "recognition": {
-            "type": "DirectHit"
+            "type": "OCR"
         },
         "action": {
             "type": "Click",
@@ -141,10 +134,7 @@
         ]
     },
     "SkipBattle": {
-        "next": [
-            "EnteringSkipPopup",
-            "[JumpBack]EnterStage"
-        ]
+        "doc": "跳过战斗节点"
     },
     "EnteringSkipPopup": {
         "recognition": {
@@ -183,10 +173,10 @@
             "type": "OCR",
             "param": {
                 "roi": [
-                    935,
-                    128,
-                    254,
-                    74
+                    953,
+                    100,
+                    225,
+                    68
                 ],
                 "expected": [
                     "战斗胜利",
@@ -233,21 +223,6 @@
             "ClickStart",
             "[JumpBack]LoadingScene"
         ]
-    },
-    "CheckTeam": {
-        "doc": "确认选择编队为期望编队",
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    217,
-                    106,
-                    96,
-                    38
-                ]
-            }
-        },
-        "inverse": true
     },
     "ScrollDownTeamList": {
         "doc": "向下滑动编队列表",
@@ -406,6 +381,39 @@
         "timeout": 60000,
         "next": [
             "WaitForCombat"
+        ]
+    },
+    "ThreadStagePopup": {
+        "doc": "处理纺锤选关弹窗",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    579,
+                    105,
+                    126,
+                    35
+                ],
+                "expected": [
+                    "选择关卡"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    579,
+                    459,
+                    148,
+                    47
+                ]
+            }
+        },
+        "post_wait_freezes": 500,
+        "next": [
+            "EnteringSkipPopup",
+            "ThreadStagePopup"
         ]
     }
 }

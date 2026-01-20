@@ -59,11 +59,74 @@
             "entry": "EnteringEnkephalinScene"
         },
         {
-            "name": "日常采光",
+            "name": "经验采光",
             "entry": "ClickStageTitle",
             "pipeline_override": {
                 "LoadingScene": {
                     "inverse": true
+                },
+                "EnteringLuxcavation": {
+                    "expected": [
+                        "经验"
+                    ],
+                    "roi": [
+                        84,
+                        244,
+                        121,
+                        37
+                    ]
+                },
+                "EnterStage": {
+                    "roi": [
+                        1013,
+                        460,
+                        194,
+                        73
+                    ]
+                },
+                "SkipBattle": {
+                    "next": [
+                        "EnteringSkipPopup",
+                        "[JumpBack]EnterStage"
+                    ]
+                }
+            },
+            "option": [
+                "进入战斗",
+                "选择编队"
+            ]
+        },
+        {
+            "name": "纺锤采光",
+            "entry": "ClickStageTitle",
+            "pipeline_override": {
+                "LoadingScene": {
+                    "inverse": true
+                },
+                "EnteringLuxcavation": {
+                    "expected": [
+                        "纺锤"
+                    ],
+                    "roi": [
+                        112,
+                        316,
+                        88,
+                        29
+                    ]
+                },
+                "EnterStage": {
+                    "roi": [
+                        291,
+                        462,
+                        162,
+                        68
+                    ]
+                },
+                "SkipBattle": {
+                    "next": [
+                        "ThreadStagePopup",
+                        "[JumpBack]EnterStage"
+                    ]
                 }
             },
             "option": [
@@ -80,16 +143,9 @@
                     "name": "Yes",
                     "pipeline_override": {
                         "EnterStage": {
-                            "recognition": {
-                                "param": {
-                                    "roi": [
-                                        1115,
-                                        480,
-                                        116,
-                                        14
-                                    ]
-                                }
-                            },
+                            "expected": [
+                                "进入"
+                            ],
                             "next": [
                                 "CommenceBattle"
                             ]
@@ -100,16 +156,9 @@
                     "name": "No",
                     "pipeline_override": {
                         "EnterStage": {
-                            "recognition": {
-                                "param": {
-                                    "roi": [
-                                        1124,
-                                        517,
-                                        107,
-                                        13
-                                    ]
-                                }
-                            },
+                            "expected": [
+                                "跳过战斗"
+                            ],
                             "next": [
                                 "SkipBattle"
                             ]
